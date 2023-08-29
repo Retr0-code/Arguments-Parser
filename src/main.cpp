@@ -11,13 +11,26 @@ int main(int argc, char const *argv[])
         "Show more detailed output"
         );
 
-    arg_parser.add_argument(verbose);
+    arg_parser.add_argument(&verbose);
     arg_parser.add_argument(
         "-o",
         argument::type::parameter,
         argument::declaration::single,
-        "Writes result to file"
+        "Writes result to file",
+        argument::mode::required
     );
 
+    try
+    {
+        arg_parser.parse(argc, argv);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what();
+        return -1;
+    }
+
+    
+    
     return 0;
 }

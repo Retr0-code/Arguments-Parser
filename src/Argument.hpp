@@ -1,6 +1,7 @@
 #ifndef ARGUMENT_HPP
 #define ARGUMENT_HPP
 
+#include <vector>
 #include <string>
 #include <iostream>
 #include <exception>
@@ -44,19 +45,23 @@ public:
         const char* description,
         argument::mode arg_mode = argument::mode::optional,
         const char* default_value = nullptr
-        );
+    );
 
-    const char* key();
+    const char* key() const noexcept;
 
-    argument::type arg_type();
+    argument::type arg_type() const noexcept;
 
-    argument::declaration arg_decl();
+    argument::declaration arg_decl() const noexcept;
 
-    const char* description();
+    const char* description() const noexcept;
 
-    argument::mode arg_mode();
+    argument::mode arg_mode() const noexcept;
 
-    uint16_t decl_amount();
+    uint16_t& decl_amount() noexcept;
+
+    void set_value(const char* value) noexcept;
+
+    void add_value(const char* value);
 
 private:
     const char* _key;
@@ -65,6 +70,8 @@ private:
     const char* _description;
     argument::mode _arg_mode;
     uint16_t _decl_amount;
+    const char* _value;
+    std::vector<const char*> _values;
 };
 
 #endif
