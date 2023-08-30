@@ -3,7 +3,7 @@
 unknown_argument::unknown_argument(const char *key) : _key(key)
 {
     std::ostringstream error_stream;
-    error_stream << "Unknown parameter <" << _key << ">\n";
+    error_stream << "Unknown argument <" << _key << ">\n";
 
     std::string mid_buffer {error_stream.str()};
     size_t msg_len {mid_buffer.length()};
@@ -23,7 +23,12 @@ const char* unknown_argument::what() const noexcept
 }
 
 
-const char *required_arguments::what() const noexcept
+const char* required_arguments::what() const noexcept
 {
     return "Complete required arguments in order to run program\n";
+}
+
+const char* usage_message::what() const noexcept
+{
+    return "Program usage menu\n";
 }

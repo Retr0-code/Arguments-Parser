@@ -30,4 +30,13 @@ public:
     const char* what() const noexcept override;
 };
 
+
+class usage_message : public std::exception
+{
+public:
+    usage_message() = default;
+
+    const char* what() const noexcept override;
+};
+
 #endif

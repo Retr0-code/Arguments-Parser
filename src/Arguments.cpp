@@ -68,3 +68,13 @@ void argument::add_value(const char* value)
     _value = value;
     _values.push_back(value);
 }
+
+const char* argument::get_value() const
+{
+    return _value;
+}
+
+const std::vector<const char *> &argument::get_values() const
+{
+    return _values;
+}

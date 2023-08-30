@@ -13,7 +13,8 @@ public:
     enum type : uint8_t
     {
         flag,
-        parameter
+        parameter,
+        help
     };
 
     enum declaration : uint8_t
@@ -62,6 +63,10 @@ public:
     void set_value(const char* value) noexcept;
 
     void add_value(const char* value);
+
+    const char* get_value() const;
+
+    const std::vector<const char*>& get_values() const;
 
 private:
     const char* _key;
