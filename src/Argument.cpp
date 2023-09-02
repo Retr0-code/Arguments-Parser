@@ -78,3 +78,25 @@ const std::vector<const char *> &argument::get_values() const
 {
     return _values;
 }
+
+void argument::show_help() const
+{
+    std::cout << _key;
+
+    if (_arg_mode == argument::mode::required)
+        std::cout << "\tREQUIRED";
+    else
+        std::cout << "\tOPTIONAL";
+
+    if (_arg_type == argument::type::flag)
+        std::cout << "\tFLAG";
+    else
+        std::cout << "\tPARM";
+
+    if (_arg_decl == argument::declaration::single)
+        std::cout << "\tSINGLE";
+    else
+        std::cout << "\tMULTI";
+
+    std::printf("\t%s\n", _description);
+}

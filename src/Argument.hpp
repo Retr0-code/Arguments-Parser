@@ -68,6 +68,8 @@ public:
 
     const std::vector<const char*>& get_values() const;
 
+    void show_help() const;
+
 private:
     const char* _key;
     argument::type _arg_type;

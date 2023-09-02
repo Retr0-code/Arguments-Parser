@@ -103,30 +103,33 @@ void arguments_parser::show_help() const
     this->help_prefix();
 
     for (const auto& arg_pair : _arguments)
-        show_help(arg_pair.first);
+        arg_pair.second->show_help();
+        // show_help(arg_pair.first);
 }
 
 void arguments_parser::show_help(std::string key) const
 {
-    const argument* arg {_arguments.at(key)};
-    std::cout << arg->key();
+    this->help_prefix();
+    _arguments.at(key)->show_help();
+    // const argument* arg {_arguments.at(key)};
+    // std::cout << arg->key();
 
-    if (arg->arg_mode() == argument::mode::required)
-        std::cout << "\tREQUIRED";
-    else
-        std::cout << "\tOPTIONAL";
+    // if (arg->arg_mode() == argument::mode::required)
+    //     std::cout << "\tREQUIRED";
+    // else
+    //     std::cout << "\tOPTIONAL";
 
-    if (arg->arg_type() == argument::type::flag)
-        std::cout << "\tFLAG";
-    else
-        std::cout << "\tPARM";
+    // if (arg->arg_type() == argument::type::flag)
+    //     std::cout << "\tFLAG";
+    // else
+    //     std::cout << "\tPARM";
 
-    if (arg->arg_decl() == argument::declaration::single)
-        std::cout << "\tSINGLE";
-    else
-        std::cout << "\tMULTI";
+    // if (arg->arg_decl() == argument::declaration::single)
+    //     std::cout << "\tSINGLE";
+    // else
+    //     std::cout << "\tMULTI";
 
-    std::printf("\t%s\n", arg->description());
+    // std::printf("\t%s\n", arg->description());
 }
 
 arguments_parser::~arguments_parser()
