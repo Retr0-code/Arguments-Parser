@@ -1,18 +1,18 @@
 #include "Argument.hpp"
 #include "ArgumentsParser.hpp"
 
-int main(int argc, char const** argv)
+int main(int argc, const char** argv)
 {
     arguments_parser arg_parser("Simple example program that demonstartes work of arguments parsing library.");
     
-    argument verbose(
+    argument_ptr verbose{ new argument(
         "-v",
         argument::type::flag,
         argument::declaration::multiple,
         "Show more detailed output"
-        );
+    )};
 
-    arg_parser.add_argument(&verbose);
+    arg_parser.add_argument(verbose);
     arg_parser.add_argument(
         "-o",
         argument::type::parameter,

@@ -1,6 +1,7 @@
 #ifndef ARGUMENT_HPP
 #define ARGUMENT_HPP
 
+#include <memory>
 #include <vector>
 #include <string>
 #include <cstdint>
@@ -72,6 +73,7 @@ public:
     void show_help() const;
 
 private:
+    std::vector<const char*> _values;
     const char* _key;
     argument::type _arg_type;
     argument::declaration _arg_decl;
@@ -79,7 +81,8 @@ private:
     argument::mode _arg_mode;
     uint16_t _decl_amount;
     const char* _value;
-    std::vector<const char*> _values;
 };
+
+using argument_ptr = std::shared_ptr<argument>;
 
 #endif
