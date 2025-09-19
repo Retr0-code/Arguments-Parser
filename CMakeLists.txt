@@ -9,11 +9,5 @@ set(LIBRARY_SRC
     src/ArgumentsParser.cpp
 )
 
-set(LIBRARY_HEAD
-    src/Exceptions.hpp;
-    src/Argument.hpp;
-    src/ArgumentsParser.hpp;
-)
-
-add_library(${PROJECT_NAME} ${LIB_TYPE} STATIC ${LIBRARY_HEAD})
-target_include_directories(${PROJECT_NAME} include)
+add_library(${PROJECT_NAME} STATIC ${LIBRARY_SRC})
+target_include_directories(${PROJECT_NAME} PUBLIC include)
